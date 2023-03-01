@@ -1,32 +1,22 @@
 import css from './Form.module.css';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/store';
-import * as yup from 'yup';
 import { Formik, Field } from 'formik';
-
-let schema = yup.object().shape({
-  name: yup.string().required(),
-  number: yup.number().required(),
-});
 
 const Form = () => {
   const dispatch = useDispatch();
-
-  const handleFormSubmit = (values, { resetForm }) => {
-    dispatch(addContact(values));
+  const initialValues = {
+    name: '',
+    number: '',
+  };
+  const handleFormSubmit = ({ name, number }, { resetForm }) => {
+    dispatch(addContact( name, number ));
     resetForm();
   };
 
     return (
-      <Formik
-      initialValues={{
-        name: '',
-        number: '',
-      }}
-      validationSchema={schema}
-      onSubmit={handleFormSubmit}
-    >
-      <form className={css.phonebook}>
+      <Formik initialValues={initialValues} onSubmit={handleFormSubmit}>
+      <form className={css.phonebook} >
         <label>
           <p>Name</p>
           <Field
