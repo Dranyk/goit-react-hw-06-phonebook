@@ -1,6 +1,6 @@
-export const getContacts = Store => Store.contacts;
+export const getContacts = store => store.contacts;
 
-export const getFilter = ({ contacts, filter }) => {
+export const getFilterContacts  = ({ contacts, filter }) => {
   if (!filter) {
     return contacts;
   }
@@ -12,3 +12,5 @@ export const getFilter = ({ contacts, filter }) => {
 
   return result;
 };
+
+export const getFilter = ({ filter }) => filter;
