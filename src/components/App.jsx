@@ -1,5 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import { nanoid } from 'nanoid';
 import css from './App.module.css';
 import ContactsList from './ContactsList/ContactsList';
 import Form from './Form/Form';

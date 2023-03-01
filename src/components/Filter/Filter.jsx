@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { filterChange } from 'redux/store';
+import { filterChange } from 'redux/filtersSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
