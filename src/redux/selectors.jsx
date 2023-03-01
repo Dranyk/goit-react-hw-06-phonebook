@@ -1,6 +1,6 @@
-export const getAllContacts = Store => Store.contacts;
+export const getContacts = Store => Store.contacts;
 
-export const getFilterContacts = ({ contacts, filter }) => {
+export const getFilter = ({ contacts, filter }) => {
   if (!filter) {
     return contacts;
   }

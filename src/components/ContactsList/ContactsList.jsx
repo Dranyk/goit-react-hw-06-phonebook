@@ -9,6 +9,4 @@ const ContactsList = ({ contactList }) => (
   </ul>
 );
 
-
-
 export default ContactsList;

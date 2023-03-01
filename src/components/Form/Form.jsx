@@ -1,7 +1,8 @@
 import css from './Form.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { Formik, Field } from 'formik';
+import { getContacts } from 'redux/selectors';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -9,7 +10,13 @@ const Form = () => {
     name: '',
     number: '',
   };
+  const contacts = useSelector(getContacts);
   const handleFormSubmit = ({ name, number }, { resetForm }) => {
+    if (
+      contacts.find(option => option.name.toLowerCase() === name.toLowerCase())
+    ) {
+      return  alert('Contact is in phonebook');
+    }
     dispatch(addContact( name, number ));
     resetForm();
   };
