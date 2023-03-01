@@ -10,24 +10,32 @@ const startData = [
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: startData,
-  
+
   reducers: {
-    addContact(state, action) {
-      console.log(action.payload);
-      if (
-        state.contacts.some(
-          ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
-        )
-      ) {
-        alert('Contact is in phonebook');
-      } else {
-        const newContact = {
-          id: nanoid(),
-          name: action.payload.name,
-          number: action.payload.number,
-        };
-        state.contacts.push(newContact);
-      }
+    // addContact(state, action) {
+    //   console.log(action.payload);
+    //   if (
+    //     state.contacts.some(
+    //       ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
+    //     )
+    //   ) {
+    //     alert('Contact is in phonebook');
+    //   } else {
+    //     const newContact = {
+    //       id: nanoid(),
+    //       name: action.payload.name,
+    //       number: action.payload.number,
+    //     };
+    //     state.contacts.push(newContact);
+    //   }
+    // },
+    addContact: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      prepare(name, number) {
+        return { payload: { id: nanoid(), name, number } };
+      },
     },
     deleteContact(state, action) {
       state.contacts = state.contacts.filter(({ id }) => id !== action.payload);
