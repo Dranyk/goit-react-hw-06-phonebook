@@ -9,12 +9,11 @@ const startData = [
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    contacts: startData,
-    filter: '',
-  },
+  initialState: startData,
+  
   reducers: {
     addContact(state, action) {
+      console.log(action.payload);
       if (
         state.contacts.some(
           ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
