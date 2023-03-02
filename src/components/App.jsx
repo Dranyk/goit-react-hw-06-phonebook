@@ -1,6 +1,6 @@
 import css from './App.module.css';
 import ContactsList from './ContactsList/ContactsList';
-import Form from './Form/Form';
+import AddForm from './Form/Form';
 import Filter from './Filter/Filter';
 import { useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
@@ -8,7 +8,6 @@ import { getContacts, getFilter } from 'redux/selectors';
 export default function App() {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  console.log(contacts, 'Контакты');
   const normalizedFilter = filter.toLowerCase();
   const showFilteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
@@ -18,7 +17,7 @@ export default function App() {
     <div className={css.container}>
       <div>
         <h1>Phonebook</h1>
-        <Form />
+        <AddForm />
 
         <h2>Contacts</h2>
 
